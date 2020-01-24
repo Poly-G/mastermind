@@ -2,10 +2,14 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 
+// import components
+import UserInput from "./components/UserInput";
+
 class App extends React.Component {
   state = {
     numbers: []
   };
+
   componentDidMount() {
     axios
       .get(
@@ -20,6 +24,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <p>{this.state.numbers}</p>
+        <UserInput numbers={this.state.numbers} />
       </div>
     );
   }
