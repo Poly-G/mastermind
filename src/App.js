@@ -7,7 +7,7 @@ import UserInput from "./components/UserInput";
 
 class App extends React.Component {
   state = {
-    numbers: []
+    randomNumber: []
   };
 
   componentDidMount() {
@@ -16,15 +16,15 @@ class App extends React.Component {
         "https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new"
       )
       .then(res => {
-        this.setState({ numbers: res.data });
+        this.setState({ randomNumber: res.data.split("\n") });
       })
       .catch(error => console.log(error));
   }
   render() {
     return (
       <div className="App">
-        <p>{this.state.numbers}</p>
-        <UserInput numbers={this.state.numbers} />
+        <p>{this.state.randomNumber}</p>
+        <UserInput randomNumber={this.state.randomNumber} />
       </div>
     );
   }
