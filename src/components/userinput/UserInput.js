@@ -31,8 +31,8 @@ export default class UserInput extends Component {
       },
       () => {
         this.guesser();
-        this.modal();
         this.historyFunc();
+        this.gameOver();
       }
     );
   };
@@ -84,7 +84,7 @@ export default class UserInput extends Component {
     num = 0;
   };
 
-  modal = () => {
+  gameOver = () => {
     let { allGuesses } = this.state;
     if (allGuesses.length === 10) {
       alert("game over");
@@ -124,7 +124,14 @@ export default class UserInput extends Component {
         <Form onSubmit={this.handleSubmit}>
           <label>
             Guess Number:
-            <input type="number" value={input} onChange={this.handleChange} />
+            <input
+              type="text"
+              value={input}
+              onChange={this.handleChange}
+              pattern="\d*"
+              maxlength="4"
+              placeholder="Input a number"
+            />
           </label>
           <Button type="submit" value="Submit">
             Submit
