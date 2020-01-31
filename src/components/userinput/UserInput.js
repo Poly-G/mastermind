@@ -99,7 +99,7 @@ export default class UserInput extends Component {
       display = "";
     } else {
       display = (
-        <div>
+        <div className="incorrect-guess">
           <h3>INCORRECT GUESS</h3>
           <p>{correct} Number(s) is correct, and in the correct location</p>
           <p>{contains} Number(s) is correct, but in the wrong location</p>
@@ -117,25 +117,27 @@ export default class UserInput extends Component {
   };
 
   render() {
+    let { input, result, history, allGuesses } = this.state;
+
     return (
       <div className="userinput">
         <Form onSubmit={this.handleSubmit}>
           <label>
             Guess Number:
-            <input
-              type="number"
-              value={this.state.input}
-              onChange={this.handleChange}
-            />
+            <input type="number" value={input} onChange={this.handleChange} />
           </label>
           <Button type="submit" value="Submit">
             Submit
           </Button>
         </Form>
-        <p>{this.state.result}</p>
+        <p>{result}</p>
+
+        <h3>CURRENT GUESS</h3>
+        <p>You have {10 - allGuesses.length} attempts left</p>
         {this.displayFunc()}
-        <h3>History</h3>
-        {this.state.history}
+
+        {history.length >= 1 ? <h3>HISTORY</h3> : ""}
+        {history}
       </div>
     );
   }
