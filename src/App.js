@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 
 // import components
-import UserInput from "./components/UserInput";
+import UserInput from "./components/userinput/UserInput";
 
 class App extends React.Component {
   state = {
@@ -20,6 +20,7 @@ class App extends React.Component {
       })
       .catch(error => console.log(error));
   }
+
   render() {
     return (
       <div className="App">

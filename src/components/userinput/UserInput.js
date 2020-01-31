@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./userinput.css";
 import { Button, Form } from "reactstrap";
 
 export default class UserInput extends Component {
@@ -7,7 +8,9 @@ export default class UserInput extends Component {
     currentGuess: [],
     allGuesses: [],
     contains: 0,
-    result: []
+    correct: 0,
+    result: [],
+    history: []
   };
 
   handleChange = e => {
@@ -17,8 +20,9 @@ export default class UserInput extends Component {
   };
 
   handleSubmit = e => {
-    const { input, allGuesses } = this.state;
     e.preventDefault();
+    const { input, allGuesses } = this.state;
+
     this.setState(
       {
         currentGuess: input,
@@ -27,6 +31,8 @@ export default class UserInput extends Component {
       },
       () => {
         this.guesser();
+        this.modal();
+        this.historyFunc();
       }
     );
   };
@@ -36,6 +42,7 @@ export default class UserInput extends Component {
     let { currentGuess } = this.state;
     let correctCpy = [...randomNumber];
     let arr = [];
+    let correctNum = 0;
 
     // positional correctness
     for (let i = 0; i < 4; i++) {
@@ -43,12 +50,15 @@ export default class UserInput extends Component {
 
       if (randomNum === currentGuess[i]) {
         correctCpy[i] = -1;
+        correctNum++;
+
         arr.push(randomNum);
       } else {
         arr.push("-");
       }
 
       this.setState({
+        correct: correctNum,
         result: arr
       });
     }
@@ -74,9 +84,41 @@ export default class UserInput extends Component {
     num = 0;
   };
 
+  modal = () => {
+    let { allGuesses } = this.state;
+    if (allGuesses.length === 10) {
+      alert("game over");
+    }
+  };
+
+  displayFunc = () => {
+    let { correct, contains, currentGuess } = this.state;
+    let display;
+
+    if (currentGuess.length === 0) {
+      display = "";
+    } else {
+      display = (
+        <div>
+          <h3>INCORRECT GUESS</h3>
+          <p>{correct} Number(s) is correct, and in the correct location</p>
+          <p>{contains} Number(s) is correct, but in the wrong location</p>
+        </div>
+      );
+    }
+
+    return display;
+  };
+
+  historyFunc = () => {
+    this.setState({
+      history: [...this.state.history, this.displayFunc()]
+    });
+  };
+
   render() {
     return (
-      <div>
+      <div className="userinput">
         <Form onSubmit={this.handleSubmit}>
           <label>
             Guess Number:
@@ -91,10 +133,9 @@ export default class UserInput extends Component {
           </Button>
         </Form>
         <p>{this.state.result}</p>
-        <p>
-          In addition to the correct numbers displayed, you got an additional{" "}
-          {this.state.contains} correct but in the wrong spot
-        </p>
+        {this.displayFunc()}
+        <h3>History</h3>
+        {this.state.history}
       </div>
     );
   }
