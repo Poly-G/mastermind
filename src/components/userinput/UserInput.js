@@ -63,19 +63,18 @@ export default class UserInput extends Component {
       });
     }
 
+    // if the number is correct, end game
+    if (correctNum === 4) this.winner();
+
     // general correctness
     let num = 0;
 
     for (let i = 0; i < 4; i++) {
-      console.log(correctCpy, currentGuess[i]);
-      console.log(correctCpy.indexOf(currentGuess[i]));
       if (correctCpy.includes(currentGuess[i])) {
         num++;
         correctCpy[correctCpy.indexOf(currentGuess[i])] = -1;
       }
     }
-
-    console.log(correctCpy);
 
     this.setState({
       contains: num
@@ -88,21 +87,33 @@ export default class UserInput extends Component {
     let { allGuesses } = this.state;
     if (allGuesses.length === 10) {
       alert("game over");
+
+      window.location.reload();
     }
   };
 
+  winner = () => {
+    alert("you won");
+
+    window.location.reload();
+  };
+
   displayFunc = () => {
-    let { correct, contains, currentGuess } = this.state;
+    let { correct, contains, history, currentGuess } = this.state;
     let display;
 
-    if (currentGuess.length === 0) {
+    let correctNum = correct;
+    let containsNum = contains;
+
+    if (history.length === 0) {
       display = "";
     } else {
       display = (
         <div className="incorrect-guess">
           <h3>INCORRECT GUESS</h3>
-          <p>{correct} Number(s) is correct, and in the correct location</p>
-          <p>{contains} Number(s) is correct, but in the wrong location</p>
+          <p>{currentGuess}</p>
+          <p>{correctNum} Number(s) is correct, and in the correct location</p>
+          <p>{containsNum} Number(s) is correct, but in the wrong location</p>
         </div>
       );
     }
@@ -111,9 +122,14 @@ export default class UserInput extends Component {
   };
 
   historyFunc = () => {
+    let arr = [];
+
+    arr = this.displayFunc();
     this.setState({
-      history: [...this.state.history, this.displayFunc()]
+      history: [...this.state.history, arr]
     });
+
+    console.log(this.state.history);
   };
 
   render() {
@@ -139,8 +155,9 @@ export default class UserInput extends Component {
         </Form>
         <p>{result}</p>
 
-        <h3>CURRENT GUESS</h3>
         <p>You have {10 - allGuesses.length} attempts left</p>
+        <h3>CURRENT GUESS</h3>
+
         {this.displayFunc()}
 
         {history.length >= 1 ? <h3>HISTORY</h3> : ""}
