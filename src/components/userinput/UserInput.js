@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./userinput.css";
 import { Button, Form } from "reactstrap";
+import GameOverModal from "./GameOverModal";
+import WinnerModal from "./WinnerModal";
 
 const DisplayFunc = props => {
   let { correct, contains, currentGuess, allGuesses } = props;
@@ -48,9 +50,6 @@ export default class UserInput extends Component {
       },
       async () => {
         await this.guesser();
-
-        this.gameOver();
-
         await this.historyFunc();
       }
     );
@@ -82,9 +81,6 @@ export default class UserInput extends Component {
       });
     }
 
-    // if the number is correct, end game
-    if (correctNum === 4) this.winner();
-
     // general correctness
     let num = 0;
 
@@ -106,21 +102,6 @@ export default class UserInput extends Component {
     correctNum = 0;
   };
 
-  gameOver = () => {
-    let { allGuesses } = this.state;
-    if (allGuesses.length === 10) {
-      alert("game over");
-
-      window.location.reload();
-    }
-  };
-
-  winner = () => {
-    alert("you won");
-
-    window.location.reload();
-  };
-
   historyFunc = props => {
     let arr = [];
     arr = (
@@ -139,7 +120,7 @@ export default class UserInput extends Component {
   };
 
   render() {
-    let { input, result, history, allGuesses } = this.state;
+    let { input, result, history, allGuesses, correct } = this.state;
 
     return (
       <div className="userinput">
@@ -176,6 +157,8 @@ export default class UserInput extends Component {
 
         {history.length >= 1 ? <h3>HISTORY</h3> : ""}
         {history}
+        {allGuesses.length === 10 ? <GameOverModal /> : ""}
+        {correct === 4 ? <WinnerModal /> : ""}
       </div>
     );
   }

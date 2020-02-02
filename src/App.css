@@ -1,16 +1,16 @@
 .App {
   text-align: center;
   background-color: #D4AF37;
-  width: 60%;
+  width: 1000px;
   margin: 0 auto;
-  margin-top: 3%;
-  padding: 10px 50px 50px 50px;
+  margin-top: 55px;
+  padding: 12px 50px 50px 50px;
 }
 
 .modal-dialog {
   position: fixed;
-  top: 10%;
-  left: 30%;
+  top: 68px;
+  left: 502px;
 
   background-color: #808080;
   color: white;

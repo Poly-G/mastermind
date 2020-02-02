@@ -6,3 +6,7 @@
 .userinput input {
     width: 100px;
 }
+
+.winnerModal {
+    height: 600px;
+}

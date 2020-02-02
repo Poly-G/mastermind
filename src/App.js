@@ -2,8 +2,6 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-
 // import components
 import UserInput from "./components/userinput/UserInput";
 import Timer from "./components/timer/Timer";
@@ -32,8 +30,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <InitialDirections modal={this.state.modal} toggle={this.toggle} />
+
         {this.state.modal ? "" : <Timer className="timer" />}
+
         <UserInput randomNumber={this.state.randomNumber} />
+
         <p>{this.state.randomNumber}</p>
       </div>
     );
