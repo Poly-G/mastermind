@@ -2,6 +2,23 @@ import React, { Component } from "react";
 import "./userinput.css";
 import { Button, Form } from "reactstrap";
 
+const DisplayFunc = props => {
+  let { correct, contains, currentGuess, allGuesses } = props;
+
+  let display;
+
+  display = (
+    <div className="incorrect-guess">
+      <h3>INCORRECT GUESS</h3>
+      <p>{currentGuess}</p>
+      <p>{correct} Number(s) is correct, and in the correct location</p>
+      <p>{contains} Number(s) is correct, but in the wrong location</p>
+    </div>
+  );
+
+  return display;
+};
+
 export default class UserInput extends Component {
   state = {
     input: "",
@@ -21,7 +38,7 @@ export default class UserInput extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { input, allGuesses } = this.state;
+    const { input, allGuesses, history } = this.state;
 
     this.setState(
       {
@@ -29,10 +46,12 @@ export default class UserInput extends Component {
         allGuesses: [...allGuesses, input],
         input: ""
       },
-      () => {
-        this.guesser();
-        this.historyFunc();
+      async () => {
+        await this.guesser();
+
         this.gameOver();
+
+        await this.historyFunc();
       }
     );
   };
@@ -80,7 +99,11 @@ export default class UserInput extends Component {
       contains: num
     });
 
+    console.log("Guesser contains :", this.state.contains);
+    console.log("Guesser correct :", this.state.correct);
+
     num = 0;
+    correctNum = 0;
   };
 
   gameOver = () => {
@@ -98,38 +121,21 @@ export default class UserInput extends Component {
     window.location.reload();
   };
 
-  displayFunc = () => {
-    let { correct, contains, history, currentGuess } = this.state;
-    let display;
-
-    let correctNum = correct;
-    let containsNum = contains;
-
-    if (history.length === 0) {
-      display = "";
-    } else {
-      display = (
-        <div className="incorrect-guess">
-          <h3>INCORRECT GUESS</h3>
-          <p>{currentGuess}</p>
-          <p>{correctNum} Number(s) is correct, and in the correct location</p>
-          <p>{containsNum} Number(s) is correct, but in the wrong location</p>
-        </div>
-      );
-    }
-
-    return display;
-  };
-
-  historyFunc = () => {
+  historyFunc = props => {
     let arr = [];
+    arr = (
+      <DisplayFunc
+        contains={this.state.contains}
+        correct={this.state.correct}
+        currentGuess={this.state.currentGuess}
+      />
+    );
 
-    arr = this.displayFunc();
+    console.log("historyFunc :", arr);
+
     this.setState({
       history: [...this.state.history, arr]
     });
-
-    console.log(this.state.history);
   };
 
   render() {
@@ -158,7 +164,15 @@ export default class UserInput extends Component {
         <p>You have {10 - allGuesses.length} attempts left</p>
         <h3>CURRENT GUESS</h3>
 
-        {this.displayFunc()}
+        {history.length >= 1 ? (
+          <DisplayFunc
+            contains={this.state.contains}
+            correct={this.state.correct}
+            currentGuess={this.state.currentGuess}
+          />
+        ) : (
+          ""
+        )}
 
         {history.length >= 1 ? <h3>HISTORY</h3> : ""}
         {history}
