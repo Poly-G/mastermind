@@ -6,6 +6,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 // import components
 import UserInput from "./components/userinput/UserInput";
+import Timer from "./components/timer/Timer";
 
 class App extends React.Component {
   state = {
@@ -29,6 +30,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        {this.state.modal ? "" : <Timer className="timer" />}
         <Modal isOpen={this.state.modal}>
           <ModalHeader>
             <h1>YOU'VE MADE IT THIS FAR</h1>
@@ -40,10 +42,15 @@ class App extends React.Component {
             </p>
             <p className="intro-steps">Here are a few things we know:</p>
             <ul className="steps">
-              <li>You have 10 attempts before the cops show up</li>
               <li>
-                This is a 4 number combination vault. If you try to input
-                anything other than a number is will warn you
+                You have <span className="direction-nums">10 </span>attempts and{" "}
+                <span className="direction-nums">2 minutes</span> before the
+                cops show up
+              </li>
+              <li>
+                This is a <span className="direction-nums">4</span> number
+                combination vault. If you try to input anything other than a
+                number is will warn you
               </li>
               <li>
                 This vault gives off feedback. If you get a number in the
