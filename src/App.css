@@ -1,8 +1,44 @@
 .App {
   text-align: center;
-  background-color: white;
+  background-color: #D4AF37;
   width: 60%;
   margin: 0 auto;
-  margin-top: 10%;
+  margin-top: 3%;
   padding: 50px;
+}
+
+.modal-dialog {
+  position: fixed;
+  top: 10%;
+  left: 30%;
+
+  background-color: #808080;
+  color: white;
+  height: 400px;
+  width: 700px;
+  text-align: center;
+  border-radius: 8px;
+
+}
+
+.intro-steps {
+  font-weight: bold;
+}
+
+.steps {
+  list-style-type: none;
+}
+
+.steps li {
+  padding: 10px;
+}
+
+.modal-button {
+  height: 35px;
+  width: 200px;
+  border-radius: 4px;
+  background-color: #D4AF37;
+  color: white;
+  font-weight: bold;
+  font-size: 19px;
 }
