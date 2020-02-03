@@ -1,3 +1,7 @@
+.userinput {
+    margin-top: 30px;
+}
+
 .incorrect-guess {
     border: 1px solid black;
     margin: 25px;
