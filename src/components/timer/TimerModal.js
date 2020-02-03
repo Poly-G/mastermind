@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./timer.css";
+import "./loser.css";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 export default class TimerModal extends Component {
@@ -12,7 +12,7 @@ export default class TimerModal extends Component {
   render() {
     return (
       <div>
-        <Modal isOpen={this.state.timerModal} className="timer-modal">
+        <Modal isOpen={this.state.timerModal} className="loser-modal">
           <ModalHeader>
             <h1>TIME IS UP!!</h1>
           </ModalHeader>

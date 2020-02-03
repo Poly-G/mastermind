@@ -4,7 +4,6 @@ import "./App.css";
 
 // import components
 import UserInput from "./components/userinput/UserInput";
-import Timer from "./components/timer/Timer";
 import InitialDirections from "./components/initialDirections/InitialDirections";
 
 class App extends React.Component {

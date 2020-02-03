@@ -2,26 +2,10 @@ import React, { Component } from "react";
 import "./userinput.css";
 import { Button, Form } from "reactstrap";
 
+import Display from "./Display";
 import GameOverModal from "./GameOverModal";
 import WinnerModal from "./WinnerModal";
 import Timer from "../timer/Timer";
-
-const DisplayFunc = props => {
-  let { correct, contains, currentGuess, allGuesses } = props;
-
-  let display;
-
-  display = (
-    <div className="incorrect-guess">
-      <h3>INCORRECT GUESS</h3>
-      <p>{currentGuess}</p>
-      <p>{correct} Number(s) is correct, and in the correct location</p>
-      <p>{contains} Number(s) is correct, but in the wrong location</p>
-    </div>
-  );
-
-  return display;
-};
 
 export default class UserInput extends Component {
   state = {
@@ -104,7 +88,7 @@ export default class UserInput extends Component {
   historyFunc = props => {
     let arr = [];
     arr = (
-      <DisplayFunc
+      <Display
         contains={this.state.contains}
         correct={this.state.correct}
         currentGuess={this.state.currentGuess}
@@ -156,7 +140,7 @@ export default class UserInput extends Component {
         <h3>CURRENT GUESS</h3>
 
         {history.length >= 1 ? (
-          <DisplayFunc
+          <Display
             contains={this.state.contains}
             correct={this.state.correct}
             currentGuess={this.state.currentGuess}
