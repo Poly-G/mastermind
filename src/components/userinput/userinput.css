@@ -1,18 +1,21 @@
 .incorrect-guess {
-    border: 1px solid black;
+    border: 7px double #033859;
     margin: 25px;
+
 }
 
 .userinput input {
     width: 200px;
     padding: 7px;
     font-size: 14px;
-    margin-left: 25px
+    margin-left: 25px;
+
 }
 
 .submit {
     padding: 8px;
     font-size: 14px;
+
 }
 
 .userinput Form label {
@@ -35,5 +38,5 @@
 }
 
 .header-number {
-    color: #296600
+    color: #991415
 }

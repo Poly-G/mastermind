@@ -15,6 +15,11 @@
     background-color: blue
 }
 
+.loser-modal button {
+    background-color: white;
+    color: #D4AF36;
+}
+
 @keyframes bgcolor {
     0% {
         background-color: blue
@@ -55,8 +60,4 @@
     90% {
         background-color: red
     }
-}
-
-.header-number {
-    color: #296600
 }

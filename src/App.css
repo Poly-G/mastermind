@@ -5,6 +5,8 @@
   margin: 0 auto;
   margin-top: 55px;
   padding: 12px 50px 50px 50px;
+  border-radius: 4px;
+  color: #033859;
 }
 
 .modal-dialog {
@@ -20,8 +22,7 @@
   text-align: center;
   border-radius: 4px;
 
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-
+  box-shadow: 0px 0px 25px 15px rgba(0, 0, 0, .75)
 }
 
 .intro-steps {
