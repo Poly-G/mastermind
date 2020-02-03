@@ -12,6 +12,7 @@
     animation: bgcolor 5s infinite;
     -webkit-animation-direction: alternate;
     animation-direction: alternate;
+    background-color: blue
 }
 
 @keyframes bgcolor {

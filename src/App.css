@@ -18,7 +18,9 @@
   height: 450px;
   width: 700px;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 4px;
+
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 
 }
 
@@ -35,13 +37,38 @@
 }
 
 .modal-button {
-  height: 35px;
-  width: 200px;
-  border-radius: 4px;
-  background-color: #D4AF37;
-  color: white;
-  font-weight: bold;
   font-size: 19px;
+  border: none;
+  cursor: pointer;
+  padding: 15px 70px;
+  margin: 15px 0;
+  letter-spacing: 2px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  border-radius: 5px;
+
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+
+
+  background: #D4AF36;
+  color: #fff;
+  box-shadow: 0 6px #806920;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+
+.modal-button:hover {
+  box-shadow: 0 4px #806920;
+  top: 2px;
+}
+
+.modal-button:active {
+  box-shadow: 0 0 #806920;
+  top: 6px;
 }
 
 .direction-nums {
