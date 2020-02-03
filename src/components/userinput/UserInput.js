@@ -14,7 +14,6 @@ export default class UserInput extends Component {
     allGuesses: [],
     contains: 0,
     correct: 0,
-    result: [],
     history: []
   };
 
@@ -62,8 +61,7 @@ export default class UserInput extends Component {
       }
 
       this.setState({
-        correct: correctNum,
-        result: arr
+        correct: correctNum
       });
     }
 
@@ -103,24 +101,34 @@ export default class UserInput extends Component {
   };
 
   render() {
-    let { input, result, history, allGuesses, correct } = this.state;
+    let { input, history, allGuesses, correct } = this.state;
 
     return (
       <div className="userinput">
         {/* timer */}
-        {this.props.modal ? (
-          ""
-        ) : (
-          <Timer
-            className="timer"
-            allGuesses={this.state.allGuesses}
-            correct={this.state.correct}
-          />
-        )}
+
+        <div className="header">
+          <div>
+            {this.props.modal ? (
+              ""
+            ) : (
+              <Timer
+                className="timer"
+                allGuesses={this.state.allGuesses}
+                correct={this.state.correct}
+              />
+            )}
+          </div>
+          <h2>
+            You have{" "}
+            <span className="header-number">{10 - allGuesses.length}</span>{" "}
+            attempts left
+          </h2>
+        </div>
 
         <Form onSubmit={this.handleSubmit}>
           <label>
-            Guess Number:
+            Guess A Number:
             <input
               type="text"
               value={input}
@@ -130,13 +138,11 @@ export default class UserInput extends Component {
               placeholder="Input a number"
             />
           </label>
-          <Button type="submit" value="Submit">
+          <Button type="submit" value="Submit" className="submit">
             Submit
           </Button>
         </Form>
-        <p>{result}</p>
 
-        <p>You have {10 - allGuesses.length} attempts left</p>
         <h3>CURRENT GUESS</h3>
 
         {history.length >= 1 ? (

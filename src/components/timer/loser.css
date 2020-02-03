@@ -1,4 +1,8 @@
 .loser-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
     height: 220px;
     font-weight: bold;
     font-size: 20px;
@@ -50,4 +54,8 @@
     90% {
         background-color: red
     }
+}
+
+.header-number {
+    color: #296600
 }

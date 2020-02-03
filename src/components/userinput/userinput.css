@@ -4,9 +4,36 @@
 }
 
 .userinput input {
-    width: 100px;
+    width: 200px;
+    padding: 7px;
+    font-size: 14px;
+    margin-left: 25px
+}
+
+.submit {
+    padding: 8px;
+    font-size: 14px;
+}
+
+.userinput Form label {
+    font-size: 20px;
 }
 
 .winnerModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+
     height: 600px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
+
+.header-number {
+    color: #296600
 }

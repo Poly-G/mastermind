@@ -12,7 +12,7 @@ export default function GameOverModal() {
         </ModalHeader>
         <ModalBody>
           <p>
-            <p>The cops have showed up and you ran out of guesses</p>
+            <p>You ran out of guesses, the cops have showed up!</p>
           </p>
         </ModalBody>
         <ModalFooter>

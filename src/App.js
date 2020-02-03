@@ -34,8 +34,6 @@ class App extends React.Component {
           randomNumber={this.state.randomNumber}
           modal={this.state.modal}
         />
-
-        <p>{this.state.randomNumber}</p>
       </div>
     );
   }

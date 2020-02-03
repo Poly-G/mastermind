@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TimerModal from "./TimerModal";
+import "./loser.css";
 
 export default class Timer extends Component {
   state = {
@@ -41,7 +42,10 @@ export default class Timer extends Component {
           <TimerModal />
         ) : (
           <h2>
-            Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+            Time Remaining:{" "}
+            <span className="header-number">
+              {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+            </span>
           </h2>
         )}
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import "./userinput.css";
 
 export default function WinnerModal() {
   let restart = () => window.location.reload();
