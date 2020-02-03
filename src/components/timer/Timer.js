@@ -31,9 +31,13 @@ export default class Timer extends Component {
 
   render() {
     const { minutes, seconds } = this.state;
+    let { correct, allGuesses } = this.props;
     return (
       <div className="timer">
-        {minutes === 0 && seconds === 0 ? (
+        {minutes === 0 &&
+        seconds === 0 &&
+        correct !== 4 &&
+        allGuesses.length !== 10 ? (
           <TimerModal />
         ) : (
           <h2>

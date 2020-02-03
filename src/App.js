@@ -31,9 +31,10 @@ class App extends React.Component {
       <div className="App">
         <InitialDirections modal={this.state.modal} toggle={this.toggle} />
 
-        {this.state.modal ? "" : <Timer className="timer" />}
-
-        <UserInput randomNumber={this.state.randomNumber} />
+        <UserInput
+          randomNumber={this.state.randomNumber}
+          modal={this.state.modal}
+        />
 
         <p>{this.state.randomNumber}</p>
       </div>

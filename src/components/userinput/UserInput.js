@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./userinput.css";
 import { Button, Form } from "reactstrap";
+
 import GameOverModal from "./GameOverModal";
 import WinnerModal from "./WinnerModal";
+import Timer from "../timer/Timer";
 
 const DisplayFunc = props => {
   let { correct, contains, currentGuess, allGuesses } = props;
@@ -95,9 +97,6 @@ export default class UserInput extends Component {
       contains: num
     });
 
-    console.log("Guesser contains :", this.state.contains);
-    console.log("Guesser correct :", this.state.correct);
-
     num = 0;
     correctNum = 0;
   };
@@ -124,6 +123,17 @@ export default class UserInput extends Component {
 
     return (
       <div className="userinput">
+        {/* timer */}
+        {this.props.modal ? (
+          ""
+        ) : (
+          <Timer
+            className="timer"
+            allGuesses={this.state.allGuesses}
+            correct={this.state.correct}
+          />
+        )}
+
         <Form onSubmit={this.handleSubmit}>
           <label>
             Guess Number:

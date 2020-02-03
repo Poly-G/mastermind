@@ -1,0 +1,53 @@
+.timer-modal {
+    height: 220px;
+    font-weight: bold;
+    font-size: 20px;
+
+    /* animation */
+    -webkit-animation: bgcolor 10s infinite;
+    animation: bgcolor 5s infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+
+@keyframes bgcolor {
+    0% {
+        background-color: blue
+    }
+
+    10% {
+        background-color: red
+    }
+
+    20% {
+        background-color: blue
+    }
+
+    30% {
+        background-color: red
+    }
+
+    40% {
+        background-color: blue
+    }
+
+    50% {
+        background-color: red
+    }
+
+    60% {
+        background-color: blue
+    }
+
+    70% {
+        background-color: red
+    }
+
+    80% {
+        background-color: blue
+    }
+
+    90% {
+        background-color: red
+    }
+}
