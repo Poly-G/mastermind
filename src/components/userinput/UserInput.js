@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./userinput.css";
+
 import { Button, Form } from "reactstrap";
 
+// Component imports
 import Display from "./Display";
 import GameOverModal from "./GameOverModal";
 import WinnerModal from "./WinnerModal";
@@ -25,7 +27,7 @@ export default class UserInput extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { input, allGuesses, history } = this.state;
+    const { input, allGuesses } = this.state;
 
     this.setState(
       {
@@ -78,22 +80,19 @@ export default class UserInput extends Component {
     this.setState({
       contains: num
     });
-
-    num = 0;
-    correctNum = 0;
   };
 
-  historyFunc = props => {
+  historyFunc = () => {
     let arr = [];
+
     arr = (
       <Display
         contains={this.state.contains}
         correct={this.state.correct}
         currentGuess={this.state.currentGuess}
+        allGuesses={this.state.allGuesses}
       />
     );
-
-    console.log("historyFunc :", arr);
 
     this.setState({
       history: [...this.state.history, arr]
@@ -105,8 +104,6 @@ export default class UserInput extends Component {
 
     return (
       <div className="userinput">
-        {/* timer */}
-
         <div className="header">
           <div>
             {this.props.modal ? (
@@ -134,7 +131,7 @@ export default class UserInput extends Component {
               value={input}
               onChange={this.handleChange}
               pattern="\d*"
-              maxlength="4"
+              maxLength="4"
               placeholder="Input a number"
             />
           </label>

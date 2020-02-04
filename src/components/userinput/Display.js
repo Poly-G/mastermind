@@ -1,7 +1,7 @@
 import React from "react";
 
 const Display = props => {
-  let { correct, contains, currentGuess, allGuesses } = props;
+  let { correct, contains, currentGuess } = props;
 
   let display;
 
